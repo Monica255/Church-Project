@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.churchproject.R
 import com.example.churchproject.databinding.ActivityHomeBinding
+import com.example.churchproject.ui.bible.BibleActivity
 import com.example.churchproject.ui.jadwal.JadwalActivity
 import com.example.churchproject.ui.loginsignup.LoginSignupActivity
 import com.example.churchproject.ui.loginsignup.LoginSignupViewModel
@@ -25,9 +26,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        homeViewModel.getPassage().observe(this){
-            Log.d("bible","activity "+it.data?.data.toString())
-        }
+
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,6 +44,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.cvJadwal.setOnClickListener {
             val intent = Intent(this, JadwalActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.llBible.setOnClickListener {
+            val intent = Intent(this, BibleActivity::class.java)
             startActivity(intent)
         }
     }

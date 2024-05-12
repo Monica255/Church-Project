@@ -13,5 +13,5 @@ import javax.inject.Inject
 class HomeViewModel@Inject constructor(
     private val bibleRepository: BibleRepository
 ): ViewModel() {
-    fun getPassage() = bibleRepository.getPassage().asLiveData()
+//    fun getPassage() = bibleRepository.getPassage().asLiveData()
 }

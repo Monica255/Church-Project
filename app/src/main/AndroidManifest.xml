@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ChurchProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.bible.BibleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.jadwal.JadwalActivity"
             android:exported="false" />
         <activity

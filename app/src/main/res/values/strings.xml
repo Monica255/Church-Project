@@ -7,4 +7,9 @@
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="jadwal_ibadah">Jadwal Ibadah</string>
+    <string name="alkitab">Alkitab</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kitab">Kitab</string>
+    <string name="pasal">Pasal</string>
 </resources>

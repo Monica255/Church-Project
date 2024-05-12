@@ -4,10 +4,14 @@
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/maroon</item>
          <item name="colorSecondary">@color/gold</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 
     <style name="Theme.ChurchProject" parent="Base.Theme.ChurchProject" />
-
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <!-- Other actionBarStyle attributes -->
+        <item name="android:navigationIcon">@drawable/icon_back</item>
+    </style>
     <style name="TextStyle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textAlignment">textStart</item>
         <item name="android:textColor">@color/not_so_black</item>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ChurchProject</string>
+    <string name="keluar">Keluar</string>
+    <string name="yakin_ingin_keluar">Yakin ingin keluar?</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="jadwal_ibadah">Jadwal Ibadah</string>
+</resources>

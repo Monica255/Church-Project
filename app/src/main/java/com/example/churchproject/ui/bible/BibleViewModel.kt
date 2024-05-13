@@ -16,4 +16,6 @@ class BibleViewModel@Inject constructor(
     var selectedPassage = MutableLiveData<Passage?>()
     var passages= MutableLiveData<List<Passage>>()
     fun getPassage() = bibleRepository.getPassage().asLiveData()
+
+    fun getChapter(passage:String,verse:String) = bibleRepository.getChapter(passage,verse).asLiveData()
 }

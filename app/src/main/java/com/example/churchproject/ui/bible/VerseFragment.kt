@@ -1,5 +1,6 @@
 package com.example.churchproject.ui.bible
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.churchproject.R
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.FragmentPassageBinding
 import com.example.churchproject.databinding.FragmentVerseBinding
+import com.example.churchproject.ui.loginsignup.LoginSignupActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +32,10 @@ class VerseFragment : Fragment() {
         this.binding.rvVerse.layoutManager=layoutManager
 
         val adapter=VerseAdapter{
-
+            val intent = Intent(requireActivity(), DetailChapterActivity::class.java)
+            intent.putExtra(EXTRA_PASSAGE,viewModel.selectedPassage.value?.abbr)
+            intent.putExtra(EXTRA_VERSE,it)
+            startActivity(intent)
         }
         binding.rvVerse.adapter=adapter
 
@@ -60,5 +65,10 @@ class VerseFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
+    }
+
+    companion object{
+        const val EXTRA_PASSAGE = "passage"
+        const val EXTRA_VERSE ="verse"
     }
 }

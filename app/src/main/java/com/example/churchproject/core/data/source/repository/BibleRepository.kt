@@ -2,6 +2,7 @@ package com.example.churchproject.core.data.source.repository
 
 import android.util.Log
 import com.example.churchproject.core.data.Resource
+import com.example.churchproject.core.data.source.remote.model.ResponseChapter
 import com.example.churchproject.core.data.source.remote.model.ResponsePassage
 import com.example.churchproject.core.data.source.remote.network.ApiService
 import com.example.churchproject.core.injection.CustomBaseUrl
@@ -23,6 +24,23 @@ class BibleRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getList()
+                if (response!=null){
+                    emit(Resource.Success(response))
+                }else{
+                    emit(Resource.Error("Error getting data"))
+                }
+            } catch (e : Exception){
+                Log.d("bible","error "+e.message.toString())
+                emit(Resource.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getChapter(passage:String,verse:String): Flow<Resource<ResponseChapter>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = defaultApiService.getChapter(passage,verse)
                 if (response!=null){
                     emit(Resource.Success(response))
                 }else{

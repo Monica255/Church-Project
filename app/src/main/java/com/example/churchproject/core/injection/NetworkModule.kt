@@ -1,6 +1,7 @@
 package com.example.churchproject.core.injection
 
 import com.example.churchproject.core.data.source.remote.network.ApiService
+import com.example.churchproject.core.util.IP
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,7 +31,7 @@ class NetworkModule {
     @Provides
     @CustomBaseUrl
     fun provideCustomApiService(client: OkHttpClient): ApiService {
-        return createApiService(client, "")
+        return createApiService(client, "http://$IP/church/")
     }
 
     private fun createApiService(client: OkHttpClient, baseUrl: String): ApiService {

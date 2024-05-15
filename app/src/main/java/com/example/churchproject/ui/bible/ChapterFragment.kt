@@ -7,20 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.churchproject.R
 import com.example.churchproject.core.util.Helper
-import com.example.churchproject.databinding.FragmentPassageBinding
-import com.example.churchproject.databinding.FragmentVerseBinding
-import com.example.churchproject.ui.loginsignup.LoginSignupActivity
+import com.example.churchproject.databinding.FragmentChapterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class VerseFragment : Fragment() {
+class ChapterFragment : Fragment() {
 
-    private var _binding: FragmentVerseBinding? = null
+    private var _binding: FragmentChapterBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel:BibleViewModel by activityViewModels()
@@ -31,7 +26,7 @@ class VerseFragment : Fragment() {
         val layoutManager = GridLayoutManager(requireActivity(),5)
         this.binding.rvVerse.layoutManager=layoutManager
 
-        val adapter=VerseAdapter{
+        val adapter=ChapterAdapter{
             val intent = Intent(requireActivity(), DetailChapterActivity::class.java)
             intent.putExtra(EXTRA_PASSAGE,viewModel.selectedPassage.value?.abbr)
             intent.putExtra(EXTRA_VERSE,it)
@@ -57,7 +52,7 @@ class VerseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentVerseBinding.inflate(inflater,container,false)
+        _binding = FragmentChapterBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
         return binding.root
     }

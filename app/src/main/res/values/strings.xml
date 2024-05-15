@@ -8,8 +8,11 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="jadwal_ibadah">Jadwal Ibadah</string>
     <string name="alkitab">Alkitab</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kitab">Kitab</string>
     <string name="pasal">Pasal</string>
+    <string name="event">Acara</string>
+    <string name="attendance">Kehadiran</string>
+    <string name="delete">Hapus</string>
+    <string name="hapus_data">Hapus Data</string>
+    <string name="yakin_ingin_hapus">Yakin ingin menghapus data?</string>
 </resources>

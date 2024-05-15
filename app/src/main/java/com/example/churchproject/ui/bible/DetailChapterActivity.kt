@@ -1,16 +1,14 @@
 package com.example.churchproject.ui.bible
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.churchproject.core.data.Resource
 import com.example.churchproject.databinding.ActivityDetailChapterBinding
-import com.example.churchproject.ui.bible.VerseFragment.Companion.EXTRA_PASSAGE
-import com.example.churchproject.ui.bible.VerseFragment.Companion.EXTRA_VERSE
+import com.example.churchproject.ui.bible.ChapterFragment.Companion.EXTRA_PASSAGE
+import com.example.churchproject.ui.bible.ChapterFragment.Companion.EXTRA_VERSE
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -9,7 +9,7 @@ class SectionsPagerAdapter(activity: AppCompatActivity, private val viewModel: B
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> PassageFragment()
-            1 -> VerseFragment()
+            1 -> ChapterFragment()
             else -> throw IllegalArgumentException("Invalid position: $position")
         }
     }

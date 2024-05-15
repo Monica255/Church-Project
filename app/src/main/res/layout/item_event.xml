@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/margin_item_with_ds"
+    android:layout_marginEnd="@dimen/margin_item_with_ds"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/maroon" />
+
+    <LinearLayout
+        android:paddingTop="@dimen/margin_item_with_ds"
+        android:paddingBottom="@dimen/margin_item_with_ds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_item_with_ds"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/Header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="12" />
+
+            <TextView
+                android:id="@+id/tv_month"
+                style="@style/SubSubHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Sep"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="@dimen/margin_item_with_ds"
+            android:layout_marginBottom="@dimen/margin_item_with_ds"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_event"
+                style="@style/SubSubHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Kegitan 1"
+                android:textStyle="bold" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="6dp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/SubTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="9:00 - 12:00" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_item_with_ds"
+            android:text="@string/delete"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/maroon" />
+</LinearLayout>

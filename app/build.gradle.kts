@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.datastore.core.android)
+    implementation(libs.play.services.location)
     // Versions
     val kotlin_version = "1.7.0"
     val compose_version = "1.0.0-rc02"
@@ -87,5 +88,12 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
 
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
+
+
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation ("androidx.appcompat:appcompat:1.2.0")
+    implementation ("com.google.zxing:core:3.3.3")
+
 
 }

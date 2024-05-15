@@ -1,7 +1,10 @@
 package com.example.churchproject.core.injection
 
 import com.example.churchproject.core.data.source.remote.network.ApiService
+import com.example.churchproject.core.data.source.repository.AttendanceRepository
+import com.example.churchproject.core.data.source.repository.AuthRepository
 import com.example.churchproject.core.data.source.repository.BibleRepository
+import com.example.churchproject.core.data.source.repository.EventRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -17,5 +20,23 @@ class RepositoryModule {
     @Singleton
     fun provideBibleRepository(@DefaultBaseUrl defaultApiService: ApiService): BibleRepository{
         return BibleRepository(defaultApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(@CustomBaseUrl customApiService: ApiService): AuthRepository{
+        return AuthRepository(customApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEventRepository(@CustomBaseUrl customApiService: ApiService): EventRepository{
+        return EventRepository(customApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAttendanceRepository(@CustomBaseUrl customApiService: ApiService): AttendanceRepository{
+        return AttendanceRepository(customApiService)
     }
 }

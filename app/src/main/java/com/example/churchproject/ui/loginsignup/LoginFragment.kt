@@ -10,9 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.churchproject.R
+import com.example.churchproject.core.data.Resource
+import com.example.churchproject.core.data.source.remote.model.RequestLogin
+import com.example.churchproject.core.data.source.remote.model.UserData
 import com.example.churchproject.databinding.FragmentLoginBinding
 import com.example.churchproject.ui.home.HomeActivity
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -74,12 +78,10 @@ class LoginFragment : Fragment() {
             if(isValid){
                 email=binding.etMasukEmail.text.toString().trim()
                 password=binding.etMasukPassword.text.toString().trim()
+
             }
         }
 
-        binding.btMasuk.setOnClickListener {
-            viewModel.saveToken("test@test.com")
-        }
 
         viewModel.getToken().observe(requireActivity()) { it ->
             if (it!=""&&it!=null&&isAdded) {
@@ -89,6 +91,36 @@ class LoginFragment : Fragment() {
             }
         }
 
+        binding.btMasuk.setOnClickListener {
+            if(isDataValid){
+                viewModel.login(RequestLogin(email,password)).observe(requireActivity()){
+                    when(it){
+                        is Resource.Loading->{
+                            showLoading(true)
+                        }
+                        is Resource.Success->{
+                            showLoading(false)
+                            it.data?.let {
+                                if(it.status=="success"){
+                                    viewModel.saveToken("$email#${it.user?.role}")
+                                }
+                                Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
+                        is Resource.Error->{
+                            showLoading(false)
+                            Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun showLoading(isShowLoading: Boolean) {
+        binding.progressBar.visibility = if (isShowLoading) View.VISIBLE else View.GONE
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

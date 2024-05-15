@@ -1,5 +1,6 @@
 package com.example.churchproject.ui.loginsignup
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -8,16 +9,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.churchproject.R
+import com.example.churchproject.core.data.Resource
+import com.example.churchproject.core.data.source.remote.model.RequestLogin
+import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.databinding.FragmentLoginBinding
 import com.example.churchproject.databinding.FragmentSignupBinding
+import com.example.churchproject.ui.home.HomeActivity
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignupFragment : Fragment() {
     private var _binding: FragmentSignupBinding? = null
+    private val viewModel: LoginSignupViewModel by viewModels()
     private val binding get() = _binding!!
     private var isDataValid=false
     private var nama = ""
@@ -118,6 +126,41 @@ class SignupFragment : Fragment() {
                     PasswordTransformationMethod.getInstance()
                 binding.etDaftarCpassword.transformationMethod =
                     PasswordTransformationMethod.getInstance()
+            }
+        }
+
+        viewModel.getToken().observe(requireActivity()) { it ->
+            if (it!=""&&it!=null&&isAdded) {
+                val intent = Intent(requireActivity(), HomeActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+        }
+
+
+        binding.btDaftar.setOnClickListener {
+            if(isDataValid){
+                viewModel.signup(RequestSignup(email,nama,password)).observe(requireActivity()){
+                    when(it){
+                        is Resource.Loading->{
+                            showLoading(true)
+                        }
+                        is Resource.Success->{
+                            showLoading(false)
+                            it.data?.let {
+                                if(it.status=="success"){
+                                    viewModel.saveToken("$email#${it.user?.role}")
+                                }
+                                Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
+                            }
+
+                        }
+                        is Resource.Error->{
+                            showLoading(false)
+                            Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
         }
     }

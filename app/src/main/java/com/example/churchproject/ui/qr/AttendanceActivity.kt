@@ -91,7 +91,9 @@ class AttendanceActivity : AppCompatActivity() {
                         it.data?.let {
                             if(it.status=="success"){
                                 getAttendance(arg)
+
                             }
+                            Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
                         }
                         showLoading(false)
                     }

@@ -1,6 +1,7 @@
 package com.example.churchproject.ui.event
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.churchproject.core.data.source.remote.model.Event
@@ -9,7 +10,7 @@ import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ItemEventBinding
 import com.example.churchproject.databinding.ItemPassageBinding
 
-class EventAdapter (private val onDelete: (Event)->Unit): RecyclerView.Adapter<EventAdapter.ItemViewHolder>() {
+class EventAdapter (private val role:String,private val onDelete: (String)->Unit): RecyclerView.Adapter<EventAdapter.ItemViewHolder>() {
 
     var list= listOf<Event>()
     override fun onCreateViewHolder(
@@ -37,8 +38,14 @@ class EventAdapter (private val onDelete: (Event)->Unit): RecyclerView.Adapter<E
             binding.tvTime.text = event.jam_mulai+" - "+event.jam_berakhir
             binding.tvDate.text = date.date
             binding.tvMonth.text = date.month
-            binding.root.setOnClickListener {
-                onDelete.invoke(event)
+            binding.btnDelete.setOnClickListener {
+                onDelete.invoke(event.id_kegiatan.toString())
+            }
+
+            if(role=="admin"){
+                binding.btnDelete.visibility = View.VISIBLE
+            }else{
+                binding.btnDelete.visibility = View.GONE
             }
         }
     }

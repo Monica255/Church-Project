@@ -6,6 +6,7 @@ import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.data.source.remote.model.RequestLogin
 import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAuth
+import com.example.churchproject.core.data.source.remote.model.ResponseEvent
 import com.example.churchproject.core.data.source.remote.network.ApiService
 import com.example.churchproject.core.injection.CustomBaseUrl
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,22 @@ class EventRepository @Inject constructor(
                     emit(Resource.Success(response))
                 }else{
                     emit(Resource.Error("Gagal mengambil data"))
+                }
+            } catch (e : Exception){
+                emit(Resource.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun deleteEvent(id:String): Flow<Resource<ResponseEvent>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = defaultApiService.deleteEvent(id)
+                if (response!=null){
+                    emit(Resource.Success(response))
+                }else{
+                    emit(Resource.Error("Gagal menghapus data"))
                 }
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))

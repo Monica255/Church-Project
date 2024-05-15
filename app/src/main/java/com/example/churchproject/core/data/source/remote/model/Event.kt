@@ -1,8 +1,5 @@
 package com.example.churchproject.core.data.source.remote.model
 
-import java.text.DateFormat
-
-
 
 data class Event(
     val id_kegiatan:Int,
@@ -10,4 +7,8 @@ data class Event(
     val tanggal:String,
     val jam_mulai:String,
     val jam_berakhir:String
+)
+
+data class ResponseEvent(
+    val status: String, val message:String
 )

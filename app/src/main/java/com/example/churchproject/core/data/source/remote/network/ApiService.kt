@@ -8,6 +8,7 @@ import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAttendance
 import com.example.churchproject.core.data.source.remote.model.ResponseAuth
 import com.example.churchproject.core.data.source.remote.model.ResponseChapter
+import com.example.churchproject.core.data.source.remote.model.ResponseEvent
 import com.example.churchproject.core.data.source.remote.model.ResponsePassage
 import com.example.churchproject.core.data.source.remote.model.ResponseUserData
 import retrofit2.http.Body
@@ -53,4 +54,8 @@ interface ApiService {
     @POST("deleteAttendance.php")
     suspend fun deleteAttendance(
         @Query("id") id: String): ResponseAttendance
+
+    @POST("deleteEvent.php")
+    suspend fun deleteEvent(
+        @Query("id") id: String): ResponseEvent
 }

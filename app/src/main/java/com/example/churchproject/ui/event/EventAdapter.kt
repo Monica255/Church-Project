@@ -37,6 +37,7 @@ class EventAdapter (private val role:String,private val onDelete: (String)->Unit
             binding.tvEvent.text = event.nama_kegiatan
             binding.tvTime.text = event.jam_mulai+" - "+event.jam_berakhir
             binding.tvDate.text = date.date
+            binding.tvId.text = "ID Kegiatan: ${event.id_kegiatan}"
             binding.tvMonth.text = date.month
             binding.btnDelete.setOnClickListener {
                 onDelete.invoke(event.id_kegiatan.toString())
@@ -44,8 +45,10 @@ class EventAdapter (private val role:String,private val onDelete: (String)->Unit
 
             if(role=="admin"){
                 binding.btnDelete.visibility = View.VISIBLE
+                binding.llIdEvent.visibility = View.VISIBLE
             }else{
                 binding.btnDelete.visibility = View.GONE
+                binding.llIdEvent.visibility = View.GONE
             }
         }
     }

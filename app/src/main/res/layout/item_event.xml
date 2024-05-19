@@ -60,6 +60,27 @@
                 android:layout_height="match_parent"
                 android:text="Kegitan 1"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                tools:visibility="visible"
+                android:visibility="gone"
+                android:id="@+id/ll_id_event"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="6dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:textStyle="bold"
+                    style="@style/SubTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Id Kegiatan: 2" />
+            </LinearLayout>
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="6dp"

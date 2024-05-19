@@ -1,4 +1,4 @@
-#Steps
+# Steps
 
 1. Clone this repository
 2. Go to main > java > core > util > Constant (change the ip address and latitude longitude)

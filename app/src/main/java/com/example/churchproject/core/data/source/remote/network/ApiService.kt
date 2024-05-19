@@ -3,6 +3,7 @@ package com.example.churchproject.core.data.source.remote.network
 import com.example.churchproject.core.data.source.remote.model.Attendance
 import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.data.source.remote.model.RequestAttendance
+import com.example.churchproject.core.data.source.remote.model.RequestEvent
 import com.example.churchproject.core.data.source.remote.model.RequestLogin
 import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAttendance
@@ -58,4 +59,8 @@ interface ApiService {
     @POST("deleteEvent.php")
     suspend fun deleteEvent(
         @Query("id") id: String): ResponseEvent
+
+    @POST("addEvent.php")
+    suspend fun addEvent(
+        @Body requestBody: RequestEvent): ResponseEvent
 }

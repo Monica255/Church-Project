@@ -94,12 +94,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.llKegiatan.setOnClickListener {
+        binding.cvKegiatan.setOnClickListener {
             val intent = Intent(this, EventActivity::class.java)
             startActivity(intent)
         }
 
-        binding.llBible.setOnClickListener {
+        binding.cvBible.setOnClickListener {
             val intent = Intent(this, BibleActivity::class.java)
             startActivity(intent)
         }

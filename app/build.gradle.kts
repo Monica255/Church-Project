@@ -5,6 +5,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
+
 android {
     namespace = "com.example.churchproject"
     compileSdk = 34
@@ -95,5 +96,6 @@ dependencies {
     implementation ("androidx.appcompat:appcompat:1.2.0")
     implementation ("com.google.zxing:core:3.3.3")
 
+    implementation ("com.github.kshitijskumar:Ticker:1.0.0")
 
 }

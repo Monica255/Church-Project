@@ -3,6 +3,7 @@ package com.example.churchproject.core.data.source.repository
 import android.util.Log
 import com.example.churchproject.core.data.Resource
 import com.example.churchproject.core.data.source.remote.model.Event
+import com.example.churchproject.core.data.source.remote.model.RequestEvent
 import com.example.churchproject.core.data.source.remote.model.RequestLogin
 import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAuth
@@ -46,6 +47,22 @@ class EventRepository @Inject constructor(
                     emit(Resource.Success(response))
                 }else{
                     emit(Resource.Error("Gagal menghapus data"))
+                }
+            } catch (e : Exception){
+                emit(Resource.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun addEvent(event:RequestEvent): Flow<Resource<ResponseEvent>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = defaultApiService.addEvent(event)
+                if (response!=null){
+                    emit(Resource.Success(response))
+                }else{
+                    emit(Resource.Error("Gagal menambahkan data"))
                 }
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))

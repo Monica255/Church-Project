@@ -15,4 +15,5 @@
     <string name="delete">Hapus</string>
     <string name="hapus_data">Hapus Data</string>
     <string name="yakin_ingin_hapus">Yakin ingin menghapus data?</string>
+    <string name="add_event">Tambah Kegiatan</string>
 </resources>

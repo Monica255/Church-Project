@@ -3,7 +3,7 @@ package com.example.churchproject.core.util
 import android.location.Location
 import android.location.LocationManager
 
-const val IP = "192.168.231.164"
+const val IP = "192.168.0.160"
 
 //niels cafe
 //val lokasiGereja = Location(LocationManager.GPS_PROVIDER).apply {

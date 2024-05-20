@@ -5,6 +5,7 @@ import com.example.churchproject.core.data.source.repository.AttendanceRepositor
 import com.example.churchproject.core.data.source.repository.AuthRepository
 import com.example.churchproject.core.data.source.repository.BibleRepository
 import com.example.churchproject.core.data.source.repository.EventRepository
+import com.example.churchproject.core.data.source.repository.PrayerRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -38,5 +39,11 @@ class RepositoryModule {
     @Singleton
     fun provideAttendanceRepository(@CustomBaseUrl customApiService: ApiService): AttendanceRepository{
         return AttendanceRepository(customApiService)
+    }
+
+    @Provides
+    @Singleton
+    fun providePrayerRepository(@CustomBaseUrl customApiService: ApiService): PrayerRepository{
+        return PrayerRepository(customApiService)
     }
 }

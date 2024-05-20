@@ -10,11 +10,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AttendanceViewModel@Inject constructor(
-    private val attendanceRepository: AttendanceRepository,
-    private val myPreference: MyPreference
+    private val attendanceRepository: AttendanceRepository
 ): ViewModel() {
     fun addAttendance(data: RequestAttendance) = attendanceRepository.addAttendance(data).asLiveData()
-    fun getToken() = myPreference.getToken().asLiveData()
 
     fun getAttendance(email: String) = attendanceRepository.getAttendance(email).asLiveData()
 

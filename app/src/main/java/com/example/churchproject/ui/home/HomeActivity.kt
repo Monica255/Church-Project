@@ -27,6 +27,8 @@ import com.example.churchproject.ui.event.EventActivity
 import com.example.churchproject.ui.jadwal.JadwalActivity
 import com.example.churchproject.ui.loginsignup.LoginSignupActivity
 import com.example.churchproject.ui.loginsignup.LoginSignupViewModel
+import com.example.churchproject.ui.prayer.PrayerActivity
+import com.example.churchproject.ui.prayer.PrayerListActivity
 import com.example.churchproject.ui.qr.AttendanceActivity
 import com.example.churchproject.ui.qr.ScanActivity
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -51,13 +53,17 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.getToken().observe(this) { it ->
-            if (it == "" || it == null) {
-                val intent = Intent(this, LoginSignupActivity::class.java)
-                startActivity(intent)
+        viewModel.getToken().observe(this) { token ->
+            if (token == "" || token == null) {
+                startActivity(Intent(this, LoginSignupActivity::class.java))
                 finish()
             } else {
-                homeViewModel.getUserData(Helper.getEmail(it))?.observe(this) {
+                binding.cvDoa.setOnClickListener{
+                    val intent =Intent(this,PrayerActivity::class.java)
+                    val intent2 =Intent(this,PrayerListActivity::class.java)
+                    startActivity(if(Helper.getRole(token)=="admin")intent2 else intent)
+                }
+                homeViewModel.getUserData(Helper.getEmail(token))?.observe(this) {
                     when (it) {
                         is Resource.Success -> {
                             showLoading(false)
@@ -90,18 +96,15 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.cvJadwal.setOnClickListener {
-            val intent = Intent(this, JadwalActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, JadwalActivity::class.java))
         }
 
         binding.cvKegiatan.setOnClickListener {
-            val intent = Intent(this, EventActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, EventActivity::class.java))
         }
 
         binding.cvBible.setOnClickListener {
-            val intent = Intent(this, BibleActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BibleActivity::class.java))
         }
 
         scanActivityResultLauncher =
@@ -147,9 +150,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btAttendance.setOnClickListener {
-            val intent = Intent(this, AttendanceActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AttendanceActivity::class.java))
         }
+
 
 
     }

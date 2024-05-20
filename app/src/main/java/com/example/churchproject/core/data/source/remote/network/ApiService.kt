@@ -2,15 +2,19 @@ package com.example.churchproject.core.data.source.remote.network
 
 import com.example.churchproject.core.data.source.remote.model.Attendance
 import com.example.churchproject.core.data.source.remote.model.Event
+import com.example.churchproject.core.data.source.remote.model.Prayer
 import com.example.churchproject.core.data.source.remote.model.RequestAttendance
 import com.example.churchproject.core.data.source.remote.model.RequestEvent
 import com.example.churchproject.core.data.source.remote.model.RequestLogin
+import com.example.churchproject.core.data.source.remote.model.RequestPrayer
 import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAttendance
 import com.example.churchproject.core.data.source.remote.model.ResponseAuth
 import com.example.churchproject.core.data.source.remote.model.ResponseChapter
 import com.example.churchproject.core.data.source.remote.model.ResponseEvent
+import com.example.churchproject.core.data.source.remote.model.ResponseListPrayer
 import com.example.churchproject.core.data.source.remote.model.ResponsePassage
+import com.example.churchproject.core.data.source.remote.model.ResponsePrayer
 import com.example.churchproject.core.data.source.remote.model.ResponseUserData
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -63,4 +67,15 @@ interface ApiService {
     @POST("addEvent.php")
     suspend fun addEvent(
         @Body requestBody: RequestEvent): ResponseEvent
+
+    @POST("addPrayer.php")
+    suspend fun addPrayer(
+        @Body requestBody: RequestPrayer): ResponsePrayer
+
+    @POST("getAllPrayer.php")
+    suspend fun getAllPrayer(): ResponseListPrayer
+
+    @POST("deletePrayer.php")
+    suspend fun deletePrayer(
+        @Query("id") id: String): ResponsePrayer
 }

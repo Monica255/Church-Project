@@ -36,7 +36,7 @@ class AttendanceActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        viewModel.getToken().observe(this) {
+        loginViewModel.getToken().observe(this) {
             val role = Helper.getRole(it)
             var arg = ""
             if (role == "admin") arg = "all" else arg = Helper.getEmail(it)

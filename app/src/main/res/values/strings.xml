@@ -16,4 +16,6 @@
     <string name="hapus_data">Hapus Data</string>
     <string name="yakin_ingin_hapus">Yakin ingin menghapus data?</string>
     <string name="add_event">Tambah Kegiatan</string>
+    <string name="doa">Doa</string>
+    <string name="prayer_list">Daftar Permintaan Doa</string>
 </resources>

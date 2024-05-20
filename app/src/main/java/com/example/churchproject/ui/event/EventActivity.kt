@@ -52,8 +52,7 @@ class EventActivity : AppCompatActivity() {
         }
 
         binding.fabAdd.setOnClickListener {
-            val intent = Intent(this, AddEventActivity::class.java)
-            activityResultLauncher.launch(intent)
+            activityResultLauncher.launch(Intent(this, AddEventActivity::class.java))
         }
     }
 

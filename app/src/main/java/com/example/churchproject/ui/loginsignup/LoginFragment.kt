@@ -85,8 +85,7 @@ class LoginFragment : Fragment() {
 
         viewModel.getToken().observe(requireActivity()) { it ->
             if (it!=""&&it!=null&&isAdded) {
-                val intent = Intent(requireActivity(), HomeActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(requireActivity(), HomeActivity::class.java))
                 requireActivity().finish()
             }
         }

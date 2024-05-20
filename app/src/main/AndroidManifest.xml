@@ -25,6 +25,12 @@
         android:theme="@style/Theme.ChurchProject"
         tools:targetApi="31">
         <activity
+            android:name=".ui.prayer.PrayerListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prayer.PrayerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.event.add.AddEventActivity"
             android:exported="false" />
         <activity

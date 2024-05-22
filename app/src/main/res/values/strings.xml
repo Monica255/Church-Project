@@ -30,4 +30,10 @@
     <string name="belum_ada_permaintaan_dokumen">Belum ada permaintaan dokumen</string>
     <string name="belum_ada_data_kehadiran">Belum ada data kehadiran</string>
     <string name="belum_data_kegiatan">Belum data kegiatan</string>
+    <string name="buat_permintaan">Buat Permintaan</string>
+    <string name="yakin_ingin_mengirim_permintaan_doa">Yakin ingin mengirim permintaan doa ini?</string>
+    <string name="yakin_ingin_mengirim_permintaan_dokumen">Yakin ingin mengirim permintaan dokumen</string>
+    <string name="data_tidak_boleh_kosong">Data tidak boleh kosong</string>
+    <string name="nama_kegiatan_tidak_boleh_kosong">Nama kegiatan tidak boleh kosong</string>
+    <string name="tanggal_kegiatan_tidak_boleh_kosong">Tanggal kegiatan tidak boleh kosong</string>
 </resources>

@@ -71,9 +71,11 @@ class AddEventActivity : AppCompatActivity() {
                     }
                 }
             }else if(name.isNullOrEmpty()){
-                Toast.makeText(this,"Nama kegiatan tidak boleh kosong",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.nama_kegiatan_tidak_boleh_kosong),Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(this,"Tanggal kegiatan tidak boleh kosong",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.tanggal_kegiatan_tidak_boleh_kosong),Toast.LENGTH_SHORT).show()
             }
         }
 

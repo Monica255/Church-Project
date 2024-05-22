@@ -56,7 +56,6 @@ class AttendanceRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.deleteAttendance(data)
-                Log.d("delete",response.toString())
                 if (response!=null){
                     emit(Resource.Success(response))
                 }else{

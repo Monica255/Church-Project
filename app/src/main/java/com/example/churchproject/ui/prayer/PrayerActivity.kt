@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -34,7 +35,7 @@ class PrayerActivity : AppCompatActivity() {
         binding.btnSend.setOnClickListener {
             val prayer = binding.etPrayer.text?.trim().toString()
             if(!prayer.isNullOrEmpty()){
-                sendData(prayer)
+                showConfirmDialog(prayer)
             }else{
                 Toast.makeText(this,"Teks tidak boleh kosong",Toast.LENGTH_SHORT).show()
             }
@@ -44,6 +45,23 @@ class PrayerActivity : AppCompatActivity() {
             startActivity(Intent(this,PrayerListActivity::class.java))
         }
 
+    }
+
+    private fun showConfirmDialog(prayer:String) {
+        val builder = AlertDialog.Builder(this)
+        val mConfirmDialog = builder.create()
+        builder.setTitle(getString(R.string.buat_permintaan))
+        builder.setMessage(getString(R.string.yakin_ingin_mengirim_permintaan_doa))
+        builder.create()
+
+        builder.setPositiveButton(getString(R.string.ya)) { _, _ ->
+            sendData(prayer)
+        }
+
+        builder.setNegativeButton(getString(R.string.tidak)) { _, _ ->
+            mConfirmDialog.cancel()
+        }
+        builder.show()
     }
 
     private fun sendData(prayer:String){

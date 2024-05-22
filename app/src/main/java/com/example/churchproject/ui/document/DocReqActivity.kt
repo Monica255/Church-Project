@@ -8,6 +8,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -60,15 +61,32 @@ class DocReqActivity : AppCompatActivity() {
         binding.btnSend.setOnClickListener {
 
             if(!date.isNullOrEmpty()&&!letter.isNullOrEmpty()){
-                sendData(date!!,letter!!)
+                showConfirmDialog(date!!,letter!!)
             }else{
-                Toast.makeText(this,"Data tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.data_tidak_boleh_kosong), Toast.LENGTH_SHORT).show()
             }
         }
         binding.fabHistory.setOnClickListener {
             startActivity(Intent(this, DocReqListActivity::class.java))
         }
 
+    }
+
+    private fun showConfirmDialog(date:String,letter: String) {
+        val builder = AlertDialog.Builder(this)
+        val mConfirmDialog = builder.create()
+        builder.setTitle(getString(R.string.buat_permintaan))
+        builder.setMessage(getString(R.string.yakin_ingin_mengirim_permintaan_dokumen))
+        builder.create()
+
+        builder.setPositiveButton(getString(R.string.ya)) { _, _ ->
+            sendData(date,letter)
+        }
+
+        builder.setNegativeButton(getString(R.string.tidak)) { _, _ ->
+            mConfirmDialog.cancel()
+        }
+        builder.show()
     }
     private fun showDatePicker() {
         val locale = getResources().configuration.locale;

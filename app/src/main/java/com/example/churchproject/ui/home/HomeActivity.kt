@@ -23,6 +23,8 @@ import com.example.churchproject.core.data.source.remote.model.RequestAttendance
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityHomeBinding
 import com.example.churchproject.ui.bible.BibleActivity
+import com.example.churchproject.ui.document.DocReqActivity
+import com.example.churchproject.ui.document.DocReqListActivity
 import com.example.churchproject.ui.event.EventActivity
 import com.example.churchproject.ui.jadwal.JadwalActivity
 import com.example.churchproject.ui.loginsignup.LoginSignupActivity
@@ -61,6 +63,11 @@ class HomeActivity : AppCompatActivity() {
                 binding.cvDoa.setOnClickListener{
                     val intent =Intent(this,PrayerActivity::class.java)
                     val intent2 =Intent(this,PrayerListActivity::class.java)
+                    startActivity(if(Helper.getRole(token)=="admin")intent2 else intent)
+                }
+                binding.cvDoc.setOnClickListener{
+                    val intent =Intent(this,DocReqActivity::class.java)
+                    val intent2 =Intent(this,DocReqListActivity::class.java)
                     startActivity(if(Helper.getRole(token)=="admin")intent2 else intent)
                 }
                 homeViewModel.getUserData(Helper.getEmail(token))?.observe(this) {

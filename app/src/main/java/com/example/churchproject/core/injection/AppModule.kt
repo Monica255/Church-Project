@@ -1,6 +1,7 @@
-package com.example.churchproject
+package com.example.churchproject.core.injection
 
 import android.content.Context
+import com.example.churchproject.MyPreference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

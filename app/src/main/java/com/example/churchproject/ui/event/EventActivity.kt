@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.churchproject.R
 import com.example.churchproject.core.data.Resource
+import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.data.source.remote.model.RequestAttendance
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityEventBinding
@@ -80,8 +81,7 @@ class EventActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.data?.let {
-                        adapter.list = it
-                        adapter.notifyDataSetChanged()
+                        showData(it)
                     }
                 }
 
@@ -92,6 +92,17 @@ class EventActivity : AppCompatActivity() {
         }
     }
 
+    private fun showData(list:List<Event>){
+        if(list.isNotEmpty()){
+            binding.tvNoData.visibility=View.GONE
+            binding.rvEvent.visibility=View.VISIBLE
+            adapter.list=list
+            adapter.notifyDataSetChanged()
+        }else{
+            binding.tvNoData.visibility=View.VISIBLE
+            binding.rvEvent.visibility=View.GONE
+        }
+    }
     private fun showConfirmDialog(it: String) {
         val builder = AlertDialog.Builder(this)
         val mConfirmDialog = builder.create()

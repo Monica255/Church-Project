@@ -16,6 +16,18 @@
     <string name="hapus_data">Hapus Data</string>
     <string name="yakin_ingin_hapus">Yakin ingin menghapus data?</string>
     <string name="add_event">Tambah Kegiatan</string>
-    <string name="doa">Doa</string>
+    <string name="permintaan_doa">Permintaan Doa</string>
     <string name="prayer_list">Daftar Permintaan Doa</string>
+    <string name="letters_request">Permintaan Dokumen</string>
+    <string name="surat_babtis">Surat Babtis</string>
+    <string name="surat_pernikahan">Surat Pernikahan</string>
+    <string name="surat_keterangan_anggota_jemaat">Surat Keterangan Anggota Jemaat</string>
+    <string name="surat_keterangan_kematian">Surat Keterangan Kematian</string>
+    <string name="surat_ijin_penggunaan_fasilitas_gereja">Surat Ijin Penggunaan Fasilitas Gereja</string>
+    <string name="daftar_permintaan_dokumen">Daftar Permintaan Dokumen</string>
+    <string name="history">History</string>
+    <string name="belum_ada_permaintaan_doa">Belum ada permaintaan doa</string>
+    <string name="belum_ada_permaintaan_dokumen">Belum ada permaintaan dokumen</string>
+    <string name="belum_ada_data_kehadiran">Belum ada data kehadiran</string>
+    <string name="belum_data_kegiatan">Belum data kegiatan</string>
 </resources>

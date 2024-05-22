@@ -37,12 +37,10 @@ class AddEventActivity : AppCompatActivity() {
             onBackPressed()
         }
         binding.etDate.setOnClickListener {
-            Log.d("addevent","clicked")
             showDatePicker()
         }
 
         binding.btnSend.setOnClickListener {
-            Log.d("addevent","clicked2")
             val name = binding.etName.text.trim().toString()
             if(!name.isNullOrEmpty()&&eventDate!=null){
                 val start =binding.timePicker.getCurrentlySelectedTime()
@@ -110,11 +108,6 @@ class AddEventActivity : AppCompatActivity() {
             showMonth,
             showDay
         )
-//        c.add(Calendar.MONTH, -3)
-
-//        dpd.datePicker.minDate = c.timeInMillis
-
-//        dpd.datePicker.maxDate = System.currentTimeMillis()
         dpd.show()
     }
 

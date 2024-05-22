@@ -1,11 +1,10 @@
 package com.example.churchproject.core.data.source.repository
 
 import com.example.churchproject.core.data.Resource
-import com.example.churchproject.core.data.source.remote.model.Event
-import com.example.churchproject.core.data.source.remote.model.Prayer
-import com.example.churchproject.core.data.source.remote.model.RequestEvent
+import com.example.churchproject.core.data.source.remote.model.RequestDoc
 import com.example.churchproject.core.data.source.remote.model.RequestPrayer
-import com.example.churchproject.core.data.source.remote.model.ResponseEvent
+import com.example.churchproject.core.data.source.remote.model.ResponseDocReq
+import com.example.churchproject.core.data.source.remote.model.ResponseListDocReq
 import com.example.churchproject.core.data.source.remote.model.ResponseListPrayer
 import com.example.churchproject.core.data.source.remote.model.ResponsePrayer
 import com.example.churchproject.core.data.source.remote.network.ApiService
@@ -18,14 +17,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PrayerRepository @Inject constructor(
+class DocReqRepository @Inject constructor(
     @CustomBaseUrl private val defaultApiService: ApiService
-){
-    fun getAllPrayes(email:String): Flow<Resource<ResponseListPrayer>> {
+) {
+    fun getAllDocReq(email:String): Flow<Resource<ResponseListDocReq>> {
         return flow {
             emit(Resource.Loading())
             try {
-                val response = defaultApiService.getAllPrayer(email)
+                val response = defaultApiService.getAllDocReq(email)
                 if (response!=null){
                     emit(Resource.Success(response))
                 }else{
@@ -37,11 +36,11 @@ class PrayerRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun deletePrayer(id:String): Flow<Resource<ResponsePrayer>> {
+    fun deleteDocReq(id:String): Flow<Resource<ResponseDocReq>> {
         return flow {
             emit(Resource.Loading())
             try {
-                val response = defaultApiService.deletePrayer(id)
+                val response = defaultApiService.deleteDocReq(id)
                 if (response!=null){
                     emit(Resource.Success(response))
                 }else{
@@ -53,11 +52,11 @@ class PrayerRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun addPrayer(prayer: RequestPrayer): Flow<Resource<ResponsePrayer>> {
+    fun addDocReq(doc: RequestDoc): Flow<Resource<ResponseDocReq>> {
         return flow {
             emit(Resource.Loading())
             try {
-                val response = defaultApiService.addPrayer(prayer)
+                val response = defaultApiService.addDocReq(doc)
                 if (response!=null){
                     emit(Resource.Success(response))
                 }else{

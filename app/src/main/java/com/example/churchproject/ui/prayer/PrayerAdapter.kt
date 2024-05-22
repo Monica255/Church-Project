@@ -10,7 +10,7 @@ import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ItemAttendanceBinding
 import com.example.churchproject.databinding.ItemListPrayerBinding
 
-class PrayerAdapter (private val onDelete: (String)->Unit): RecyclerView.Adapter<PrayerAdapter.ItemViewHolder>() {
+class PrayerAdapter (private val role:String,private val onDelete: (String)->Unit): RecyclerView.Adapter<PrayerAdapter.ItemViewHolder>() {
 
     var list= listOf<Prayer>()
     override fun onCreateViewHolder(
@@ -34,12 +34,22 @@ class PrayerAdapter (private val onDelete: (String)->Unit): RecyclerView.Adapter
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(prayer: Prayer) {
-            binding.tvEmail.text=prayer.user_email
+
             binding.tvPrayer.text =prayer.prayer
             binding.tvTime.text = Helper.formatDateAttendance(prayer.timestamp)
-            binding.btnDelete.setOnClickListener {
-                onDelete.invoke(prayer.id.toString())
+
+            if(role=="admin"){
+                binding.btnDelete.visibility=View.VISIBLE
+                binding.llEmail.visibility=View.VISIBLE
+                binding.tvEmail.text=prayer.user_email
+                binding.btnDelete.setOnClickListener {
+                    onDelete.invoke(prayer.id.toString())
+                }
+            }else{
+                binding.btnDelete.visibility=View.GONE
+                binding.llEmail.visibility=View.GONE
             }
+
         }
     }
 }

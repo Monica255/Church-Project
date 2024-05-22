@@ -1,5 +1,6 @@
 package com.example.churchproject.ui.prayer
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -37,6 +38,10 @@ class PrayerActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this,"Teks tidak boleh kosong",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.fabHistory.setOnClickListener {
+            startActivity(Intent(this,PrayerListActivity::class.java))
         }
 
     }

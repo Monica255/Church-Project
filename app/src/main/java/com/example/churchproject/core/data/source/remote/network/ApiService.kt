@@ -4,6 +4,7 @@ import com.example.churchproject.core.data.source.remote.model.Attendance
 import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.data.source.remote.model.Prayer
 import com.example.churchproject.core.data.source.remote.model.RequestAttendance
+import com.example.churchproject.core.data.source.remote.model.RequestDoc
 import com.example.churchproject.core.data.source.remote.model.RequestEvent
 import com.example.churchproject.core.data.source.remote.model.RequestLogin
 import com.example.churchproject.core.data.source.remote.model.RequestPrayer
@@ -11,7 +12,9 @@ import com.example.churchproject.core.data.source.remote.model.RequestSignup
 import com.example.churchproject.core.data.source.remote.model.ResponseAttendance
 import com.example.churchproject.core.data.source.remote.model.ResponseAuth
 import com.example.churchproject.core.data.source.remote.model.ResponseChapter
+import com.example.churchproject.core.data.source.remote.model.ResponseDocReq
 import com.example.churchproject.core.data.source.remote.model.ResponseEvent
+import com.example.churchproject.core.data.source.remote.model.ResponseListDocReq
 import com.example.churchproject.core.data.source.remote.model.ResponseListPrayer
 import com.example.churchproject.core.data.source.remote.model.ResponsePassage
 import com.example.churchproject.core.data.source.remote.model.ResponsePrayer
@@ -73,9 +76,24 @@ interface ApiService {
         @Body requestBody: RequestPrayer): ResponsePrayer
 
     @POST("getAllPrayer.php")
-    suspend fun getAllPrayer(): ResponseListPrayer
+    suspend fun getAllPrayer(
+        @Query("email") email:String
+    ): ResponseListPrayer
 
     @POST("deletePrayer.php")
     suspend fun deletePrayer(
         @Query("id") id: String): ResponsePrayer
+
+    @POST("addDocReq.php")
+    suspend fun addDocReq(
+        @Body requestBody: RequestDoc): ResponseDocReq
+
+    @POST("getAllDocReq.php")
+    suspend fun getAllDocReq(
+        @Query("email") email:String
+    ): ResponseListDocReq
+
+    @POST("deleteDocReq.php")
+    suspend fun deleteDocReq(
+        @Query("id") id: String): ResponseDocReq
 }

@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.churchproject.R
 import com.example.churchproject.core.data.Resource
+import com.example.churchproject.core.data.source.remote.model.Attendance
+import com.example.churchproject.core.data.source.remote.model.DocReq
 import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityAttendanceBinding
@@ -61,8 +63,7 @@ class AttendanceActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     it.data?.let {
-                        adapter.list = it
-                        adapter.notifyDataSetChanged()
+                        showData(it)
                     }
                 }
 
@@ -71,6 +72,18 @@ class AttendanceActivity : AppCompatActivity() {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun showData(list:List<Attendance>){
+        if(list.isNotEmpty()){
+            binding.tvNoData.visibility=View.GONE
+            binding.rvAttendance.visibility=View.VISIBLE
+            adapter.list=list
+            adapter.notifyDataSetChanged()
+        }else{
+            binding.tvNoData.visibility=View.VISIBLE
+            binding.rvAttendance.visibility=View.GONE
         }
     }
 

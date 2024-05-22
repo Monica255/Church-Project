@@ -56,7 +56,6 @@
                         android:text="test@test.com" />
                 </LinearLayout>
             </LinearLayout>
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -66,13 +65,13 @@
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Dikirim pada: " />
+                    android:text="Maksimum tgl kirim: " />
                 <TextView
                     android:id="@+id/tv_time"
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="04-05-2024 13.34" />
+                    android:text="04-05-2024" />
             </LinearLayout>
 
             <Space
@@ -89,23 +88,27 @@
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Doa: " />
+                    android:text="Tipe dokumen: " />
                 <TextView
-                    android:id="@+id/tv_prayer"
+                    android:id="@+id/tv_doc_type"
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="test test test test test test test test test test test test test test test test test test" />
+                    android:text="Surat Babtis Surat Babtis Surat Babtis Surat Babtis" />
             </LinearLayout>
+
+
+
         </LinearLayout>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_marginStart="5dp"
-            android:visibility="gone"
-            tools:visibility="visible"
             android:backgroundTint="@color/maroon"
             android:id="@+id/btn_delete"
             android:textSize="10dp"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:textColor="@color/white"
             android:layout_width="90dp"
             android:layout_height="wrap_content"

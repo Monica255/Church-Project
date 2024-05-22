@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.event.add.AddEventActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
@@ -42,53 +43,55 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-        android:padding="@dimen/margin_start_end"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_start_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_layout">
+
         <TextView
-            android:textStyle="bold"
             style="@style/TitleText"
-            android:text="Nama kegiatan: "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Nama kegiatan: "
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/et_name"
-            android:maxLines="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:maxLines="1" />
+
         <TextView
             android:id="@+id/test"
-            android:textStyle="bold"
             style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_start_end"
             android:text="Tanggal kegiatan: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textStyle="bold" />
 
 
-            <EditText
-                android:focusable="false"
-                android:id="@+id/et_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:clickable="true"
-                android:editable="false"
-                android:maxLines="1" />
-
-
+        <EditText
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:maxLines="1" />
 
 
         <TextView
-            android:textStyle="bold"
             style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_start_end"
             android:text="Waktu kegiatan: "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -101,22 +104,24 @@
                 app:hoursFormat="hours24"
                 app:minutesInterval="1"
                 app:shouldAmSelected="false" />
+
             <Space
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <RelativeLayout
-                android:layout_gravity="center_vertical"
-                android:background="@color/maroon"
                 android:layout_width="20dp"
-                android:layout_height="5dp"/>
+                android:layout_height="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/maroon" />
 
 
             <Space
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <com.example.ticker.core.ui.Ticker
                 android:id="@+id/time_picker2"
                 android:layout_width="150dp"
@@ -126,15 +131,17 @@
                 app:minutesInterval="1"
                 app:shouldAmSelected="false" />
         </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_send"
-            android:layout_marginTop="@dimen/margin_start_end"
-            android:text="Tambahkan"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_start_end"
             android:backgroundTint="@color/maroon"
-            android:layout_height="wrap_content"/>
+            android:text="Tambahkan"
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <ProgressBar
         android:id="@+id/pb_loading"
         android:layout_width="wrap_content"

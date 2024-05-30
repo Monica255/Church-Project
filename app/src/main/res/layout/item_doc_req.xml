@@ -14,58 +14,64 @@
         android:background="@color/maroon" />
 
     <LinearLayout
-        android:paddingTop="@dimen/margin_item_with_ds"
-        android:paddingBottom="@dimen/margin_item_with_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_item_with_ds"
+        android:paddingBottom="@dimen/margin_item_with_ds">
 
         <LinearLayout
-            android:layout_weight="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_item_with_ds"
             android:layout_marginBottom="@dimen/margin_item_with_ds"
+            android:layout_weight="10"
             android:gravity="start"
             android:orientation="vertical">
+
             <LinearLayout
-                android:layout_marginBottom="6dp"
                 android:id="@+id/ll_email"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:visibility="visible"
                         style="@style/SubTitleText"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Email: " />
+                        android:text="Email: "
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
                     <TextView
-                        android:visibility="visible"
                         android:id="@+id/tv_email"
                         style="@style/SubTitleText"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="test@test.com" />
+                        android:text="test@test.com"
+                        android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <TextView
-                    android:textStyle="bold"
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Maksimum tgl kirim: " />
+                    android:text="Maksimum tgl kirim: "
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tv_time"
                     style="@style/SubTitleText"
@@ -74,21 +80,19 @@
                     android:text="04-05-2024" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_weight="1" />
-
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
                 <TextView
-                    android:textStyle="bold"
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Tipe dokumen: " />
+                    android:text="Tipe dokumen: "
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tv_doc_type"
                     style="@style/SubTitleText"
@@ -97,22 +101,57 @@
                     android:text="Surat Babtis Surat Babtis Surat Babtis Surat Babtis" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Status: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    style="@style/SubTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Sedang diproses"
+                    android:textColor="@color/maroon" />
+            </LinearLayout>
 
 
         </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginStart="5dp"
-            android:backgroundTint="@color/maroon"
-            android:id="@+id/btn_delete"
-            android:textSize="10dp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:textColor="@color/white"
-            android:layout_width="90dp"
+        <LinearLayout
+            android:id="@+id/ll_delete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/delete"/>
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:backgroundTint="@color/maroon"
+                android:text="@string/delete"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+
+            <CheckBox
+                android:id="@+id/cb_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:checked="false" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout

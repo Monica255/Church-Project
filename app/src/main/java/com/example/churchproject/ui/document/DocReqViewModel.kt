@@ -16,4 +16,6 @@ class DocReqViewModel @Inject constructor(
     fun addDocReq(data:RequestDoc) =  docReqRepository.addDocReq(data).asLiveData()
     fun getAllDocReq(email:String)= docReqRepository.getAllDocReq(email).asLiveData()
     fun deleteDocReq(id:String)= docReqRepository.deleteDocReq(id).asLiveData()
+
+    fun editStatus(id:String,status:Int)=docReqRepository.editDoc(id,status).asLiveData()
 }

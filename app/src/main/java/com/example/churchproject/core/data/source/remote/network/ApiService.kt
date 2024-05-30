@@ -102,4 +102,10 @@ interface ApiService {
     @POST("deleteDocReq.php")
     suspend fun deleteDocReq(
         @Query("id") id: String): ResponseDocReq
+
+    @POST("updateDocReqStatus.php")
+    suspend fun updateStatusDoc(
+        @Query("doc_id") id: String,
+        @Query("new_status") status: Int)
+            : ResponseDocReq
 }

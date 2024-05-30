@@ -80,13 +80,8 @@
                     android:layout_height="match_parent"
                     android:text="04-05-2024 13.34" />
             </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="6dp"
-                android:layout_weight="1" />
-
             <LinearLayout
+                android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

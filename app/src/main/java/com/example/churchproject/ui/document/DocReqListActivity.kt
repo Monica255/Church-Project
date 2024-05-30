@@ -45,10 +45,29 @@ class DocReqListActivity : AppCompatActivity() {
                 arg = Helper.getEmail(it)
                 binding.toolbarTitle.text= getString(R.string.history)
             }
-
-            adapter = DocReqAdapter (role){
+            val ondelete: (String)-> Unit = {
                 showConfirmDialog(it,arg)
             }
+            val oncheck: (String,Boolean)->Unit= {id,status->
+                viewModel.editStatus(id,if(status)1 else 0).observe(this){
+                    when(it){
+                        is Resource.Loading->{
+                            showLoading(true)
+                        }
+                        is Resource.Success->{
+                            showLoading(false)
+                            if(it.message=="error"){
+                                Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        is Resource.Error->{
+                            showLoading(false)
+                            Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+            adapter = DocReqAdapter (role,ondelete,oncheck)
             binding.rvDoc.adapter = adapter
 
             getAllData(arg)

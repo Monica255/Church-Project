@@ -67,4 +67,16 @@ class DocReqRepository @Inject constructor(
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    fun editDoc(docId: String, status:Int): Flow<Resource<ResponseDocReq>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = defaultApiService.updateStatusDoc(docId,status)
+                emit(Resource.Success(response))
+            } catch (e : Exception){
+                emit(Resource.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }

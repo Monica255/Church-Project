@@ -17,4 +17,5 @@ class PrayerViewModel@Inject constructor(
     fun getAllPrayer(email:String)=repository.getAllPrayes(email).asLiveData()
 
     fun deletePrayer(id:String)=repository.deletePrayer(id).asLiveData()
+    fun editStatus(id:String,status:Int)=repository.editPrayer(id,status).asLiveData()
 }

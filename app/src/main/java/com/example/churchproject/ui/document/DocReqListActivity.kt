@@ -16,7 +16,6 @@ import com.example.churchproject.core.data.source.remote.model.DocReq
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityDocReqListBinding
 import com.example.churchproject.ui.loginsignup.LoginSignupViewModel
-import com.example.churchproject.ui.prayer.PrayerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

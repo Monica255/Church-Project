@@ -51,9 +51,29 @@ class PrayerListActivity : AppCompatActivity() {
                 binding.toolbarTitle.text = getString(R.string.history)
             }
 
-            adapter = PrayerAdapter(role) {
-                showConfirmDialog(it, arg)
+            val ondelete: (String) -> Unit = {
+                showConfirmDialog(it,arg)
+        }
+            val oncheckChange : (String,Boolean) -> Unit = {id,status->
+                viewModel.editStatus(id,if(status)1 else 0).observe(this){
+                    when(it){
+                        is Resource.Loading->{
+                            showLoading(true)
+                        }
+                        is Resource.Success->{
+                            showLoading(false)
+                            if(it.message=="error"){
+                                Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        is Resource.Error->{
+                            showLoading(false)
+                            Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
+            adapter = PrayerAdapter(role,ondelete,oncheckChange)
             binding.rvPrayers.adapter = adapter
 
             getAllData(arg)

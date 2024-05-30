@@ -84,6 +84,12 @@ interface ApiService {
     suspend fun deletePrayer(
         @Query("id") id: String): ResponsePrayer
 
+    @POST("updatePrayerStatus.php")
+    suspend fun updateStatusPrayer(
+        @Query("prayer_id") id: String,
+        @Query("new_status") status: Int)
+    : ResponsePrayer
+
     @POST("addDocReq.php")
     suspend fun addDocReq(
         @Body requestBody: RequestDoc): ResponseDocReq

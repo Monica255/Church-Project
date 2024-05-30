@@ -68,4 +68,16 @@ class PrayerRepository @Inject constructor(
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    fun editPrayer(prayerId: String, status:Int): Flow<Resource<ResponsePrayer>> {
+        return flow {
+            emit(Resource.Loading())
+            try {
+                val response = defaultApiService.updateStatusPrayer(prayerId,status)
+                emit(Resource.Success(response))
+            } catch (e : Exception){
+                emit(Resource.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }

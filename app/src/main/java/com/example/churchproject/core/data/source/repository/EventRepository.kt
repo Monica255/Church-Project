@@ -22,6 +22,7 @@ import javax.inject.Singleton
 class EventRepository @Inject constructor(
     @CustomBaseUrl private val defaultApiService: ApiService
 ){
+
     fun getAllEvent(): Flow<Resource<List<Event>>> {
         return flow {
             emit(Resource.Loading())

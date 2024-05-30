@@ -36,4 +36,8 @@
     <string name="data_tidak_boleh_kosong">Data tidak boleh kosong</string>
     <string name="nama_kegiatan_tidak_boleh_kosong">Nama kegiatan tidak boleh kosong</string>
     <string name="tanggal_kegiatan_tidak_boleh_kosong">Tanggal kegiatan tidak boleh kosong</string>
+    <string name="edit">Edit</string>
+    <string name="edit_kegiatan">Edit Kegiatan</string>
+    <string name="tambahkan">Tambahkan</string>
+    <string name="edit_data">Edit Data</string>
 </resources>

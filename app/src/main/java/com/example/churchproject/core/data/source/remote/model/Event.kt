@@ -14,6 +14,7 @@ data class ResponseEvent(
 )
 
 data class RequestEvent(
+    val id_kegiatan: Int? =null,
     val nama_kegiatan:String,
     val tanggal:String,
     val jam_mulai:String,

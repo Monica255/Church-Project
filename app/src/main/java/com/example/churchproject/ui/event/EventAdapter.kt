@@ -1,5 +1,6 @@
 package com.example.churchproject.ui.event
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,13 @@ import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ItemEventBinding
 import com.example.churchproject.databinding.ItemPassageBinding
 
-class EventAdapter (private val role:String,private val onDelete: (String)->Unit): RecyclerView.Adapter<EventAdapter.ItemViewHolder>() {
+class EventAdapter(
+    private val role: String,
+    private val onDelete: (String) -> Unit,
+    private val onEdit: (Event) -> Unit
+) : RecyclerView.Adapter<EventAdapter.ItemViewHolder>() {
 
-    var list= listOf<Event>()
+    var list = listOf<Event>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -27,7 +32,7 @@ class EventAdapter (private val role:String,private val onDelete: (String)->Unit
         holder.bind(list[position])
     }
 
-    override fun getItemCount()=list.size
+    override fun getItemCount() = list.size
 
     inner class ItemViewHolder(private val binding: ItemEventBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -35,7 +40,7 @@ class EventAdapter (private val role:String,private val onDelete: (String)->Unit
         fun bind(event: Event) {
             val date = Helper.getDate(event.tanggal)
             binding.tvEvent.text = event.nama_kegiatan
-            binding.tvTime.text = event.jam_mulai+" - "+event.jam_berakhir
+            binding.tvTime.text = event.jam_mulai + " - " + event.jam_berakhir
             binding.tvDate.text = date.date
             binding.tvId.text = "ID Kegiatan: ${event.id_kegiatan}"
             binding.tvMonth.text = date.month
@@ -43,11 +48,16 @@ class EventAdapter (private val role:String,private val onDelete: (String)->Unit
                 onDelete.invoke(event.id_kegiatan.toString())
             }
 
-            if(role=="admin"){
-                binding.btnDelete.visibility = View.VISIBLE
+            binding.btnEdit.setOnClickListener {
+                Log.d("editevent",event.toString())
+                onEdit.invoke(event)
+            }
+
+            if (role == "admin") {
+                binding.llDelete.visibility = View.VISIBLE
                 binding.llIdEvent.visibility = View.VISIBLE
-            }else{
-                binding.btnDelete.visibility = View.GONE
+            } else {
+                binding.llDelete.visibility = View.GONE
                 binding.llIdEvent.visibility = View.GONE
             }
         }

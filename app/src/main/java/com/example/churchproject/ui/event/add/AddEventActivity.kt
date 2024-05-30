@@ -13,6 +13,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.churchproject.R
 import com.example.churchproject.core.data.Resource
 import com.example.churchproject.core.data.source.remote.model.RequestEvent
+import com.example.churchproject.core.util.EXTRA_DATE
+import com.example.churchproject.core.util.EXTRA_END_TIME
+import com.example.churchproject.core.util.EXTRA_ID_EVENT
+import com.example.churchproject.core.util.EXTRA_NAME_EVENT
+import com.example.churchproject.core.util.EXTRA_START_TIME
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityAddEventBinding
 import com.example.churchproject.ui.event.EventViewModel
@@ -25,10 +30,30 @@ class AddEventActivity : AppCompatActivity() {
     private val viewModel: EventViewModel by viewModels()
     lateinit var binding: ActivityAddEventBinding
     var eventDate:String?=null
+    var id:Int=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val id = intent.getIntExtra(EXTRA_ID_EVENT,-1)
+        if(id!=-1){
+            binding.toolbarTitle.text = getString(R.string.edit_kegiatan)
+            binding.btnSend.text = getString(R.string.edit_data)
+            val name = intent.getStringExtra(EXTRA_NAME_EVENT)
+            val start = intent.getStringExtra(EXTRA_START_TIME)
+            val end = intent.getStringExtra(EXTRA_END_TIME)
+            eventDate = intent.getStringExtra(EXTRA_DATE)
+
+
+            binding.etName.setText(name)
+            binding.etDate.setText(eventDate)
+            binding.timePicker.setInitialSelectedTime(start?:"09:00")
+            binding.timePicker2.setInitialSelectedTime(end?:"11:00")
+        }else{
+            binding.toolbarTitle.text = getString(R.string.add_event)
+            binding.btnSend.text = getString(R.string.tambahkan)
+        }
 
 //        binding.timePicker.setInitialSelectedTime("09:00 Am")
 //        binding.timePicker2.setInitialSelectedTime("11:00 Am")
@@ -45,7 +70,7 @@ class AddEventActivity : AppCompatActivity() {
             if(!name.isNullOrEmpty()&&eventDate!=null){
                 val start =binding.timePicker.getCurrentlySelectedTime()
                 val end =binding.timePicker2.getCurrentlySelectedTime()
-                val data=RequestEvent(
+                val data=RequestEvent(if(id<0)null else id,
                     name,eventDate!!,start,end
                 )
                 viewModel.addEvent(data).observe(this){
@@ -88,7 +113,15 @@ class AddEventActivity : AppCompatActivity() {
         var showYear = c.get(Calendar.YEAR)
         var showMonth = c.get(Calendar.MONTH)
         var showDay = c.get(Calendar.DAY_OF_MONTH)
-
+        Log.d("editevent",showYear.toString())
+        Log.d("editevent",showMonth.toString())
+        Log.d("editevent",showDay.toString())
+        eventDate?.let {
+            val x =it.split("-")
+            showDay=x[0].toInt()
+            showMonth=x[1].toInt()-1
+            showYear=x[2].toInt()
+        }
 
         val dpd = DatePickerDialog(
             this,

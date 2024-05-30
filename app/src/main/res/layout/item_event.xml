@@ -14,12 +14,12 @@
         android:background="@color/maroon" />
 
     <LinearLayout
-        android:paddingTop="@dimen/margin_item_with_ds"
-        android:paddingBottom="@dimen/margin_item_with_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_item_with_ds"
+        android:paddingBottom="@dimen/margin_item_with_ds">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,29 +62,32 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                tools:visibility="visible"
-                android:visibility="gone"
                 android:id="@+id/ll_id_event"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="6dp"
                     android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/tv_id"
-                    android:textStyle="bold"
                     style="@style/SubTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Id Kegiatan: 2" />
+                    android:text="Id Kegiatan: 2"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="6dp"
                 android:layout_weight="1" />
+
             <TextView
                 android:id="@+id/tv_time"
                 style="@style/SubTitleText"
@@ -98,17 +101,33 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete"
-            android:textSize="10dp"
+        <LinearLayout
+            android:id="@+id/ll_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_item_with_ds"
-            android:text="@string/delete"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/maroon"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:layout_marginEnd="@dimen/margin_item_with_ds"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/maroon"
+                android:text="@string/delete"
+                android:textColor="@color/white"
+                android:textSize="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gold"
+                android:text="@string/edit"
+                android:textColor="@color/white"
+                android:textSize="10dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <RelativeLayout

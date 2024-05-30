@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_start_end"
             android:backgroundTint="@color/maroon"
-            android:text="Tambahkan"
+            android:text="@string/tambahkan"
             android:textColor="@color/white" />
     </LinearLayout>
 

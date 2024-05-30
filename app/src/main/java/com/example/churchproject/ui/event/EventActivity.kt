@@ -2,6 +2,7 @@ package com.example.churchproject.ui.event
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,11 @@ import com.example.churchproject.R
 import com.example.churchproject.core.data.Resource
 import com.example.churchproject.core.data.source.remote.model.Event
 import com.example.churchproject.core.data.source.remote.model.RequestAttendance
+import com.example.churchproject.core.util.EXTRA_DATE
+import com.example.churchproject.core.util.EXTRA_END_TIME
+import com.example.churchproject.core.util.EXTRA_ID_EVENT
+import com.example.churchproject.core.util.EXTRA_NAME_EVENT
+import com.example.churchproject.core.util.EXTRA_START_TIME
 import com.example.churchproject.core.util.Helper
 import com.example.churchproject.databinding.ActivityEventBinding
 import com.example.churchproject.ui.bible.PassageAdapter
@@ -35,7 +41,7 @@ class EventActivity : AppCompatActivity() {
     private val activityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
-                getToken()
+                getEvents()
             }
         }
 
@@ -64,9 +70,19 @@ class EventActivity : AppCompatActivity() {
 
             binding.fabAdd.visibility = if (role == "admin") View.VISIBLE else View.GONE
 
-            adapter = EventAdapter(role) {
+            val ondelete :(String)->Unit = {
                 showConfirmDialog(it)
             }
+            adapter = EventAdapter(role,ondelete){
+                val intent = Intent(this@EventActivity,AddEventActivity::class.java)
+                intent.putExtra(EXTRA_NAME_EVENT,it.nama_kegiatan)
+                intent.putExtra(EXTRA_ID_EVENT,it.id_kegiatan)
+                intent.putExtra(EXTRA_START_TIME,it.jam_mulai)
+                intent.putExtra(EXTRA_END_TIME,it.jam_berakhir)
+                intent.putExtra(EXTRA_DATE,it.tanggal)
+                startActivity(intent)
+            }
+
             binding.rvEvent.adapter = adapter
         }
     }

@@ -13,6 +13,7 @@ class EventViewModel@Inject constructor(
     private val event: EventRepository
 ): ViewModel() {
 
+    val data=""
     fun getAllEvent() = event.getAllEvent().asLiveData()
 
     fun deleteEvent(id:String) = event.deleteEvent(id).asLiveData()

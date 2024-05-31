@@ -103,6 +103,7 @@ class LoginFragment : Fragment() {
                                 if(it.status=="success"){
                                     viewModel.saveToken("$email#${it.user?.role}")
                                 }
+                                Log.d("error login",it.message)
                                 Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
                             }
 

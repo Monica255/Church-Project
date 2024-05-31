@@ -24,11 +24,7 @@ class AttendanceRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.addAttendance(data)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal mengambil data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -40,11 +36,7 @@ class AttendanceRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getAttendance(data)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal mengambil data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -56,11 +48,7 @@ class AttendanceRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.deleteAttendance(data)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal menghapus data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }

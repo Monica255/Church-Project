@@ -65,6 +65,7 @@ class AddEventActivity : AppCompatActivity() {
             showDatePicker()
         }
 
+
         binding.btnSend.setOnClickListener {
             val name = binding.etName.text.trim().toString()
             if(!name.isNullOrEmpty()&&eventDate!=null){

@@ -22,16 +22,13 @@ import javax.inject.Singleton
 class AuthRepository @Inject constructor(
     @CustomBaseUrl private val defaultApiService: ApiService
 ){
+
     fun login(data:RequestLogin): Flow<Resource<ResponseAuth>> {
         return flow {
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.login(data)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal login"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -43,11 +40,7 @@ class AuthRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.signup(data)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal login"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -59,11 +52,7 @@ class AuthRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getUserData(email)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal mendapat data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }

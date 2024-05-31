@@ -26,11 +26,7 @@ class PrayerRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getAllPrayer(email)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal mengambil data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -42,11 +38,7 @@ class PrayerRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.deletePrayer(id)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal menghapus data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -58,11 +50,7 @@ class PrayerRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.addPrayer(prayer)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal menambahkan data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }

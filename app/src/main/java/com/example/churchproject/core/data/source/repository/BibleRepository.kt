@@ -24,11 +24,7 @@ class BibleRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getList()
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Error getting data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 Log.d("bible","error "+e.message.toString())
                 emit(Resource.Error(e.message.toString()))
@@ -41,11 +37,7 @@ class BibleRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getChapter(passage,verse)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Error getting data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 Log.d("bible","error "+e.message.toString())
                 emit(Resource.Error(e.message.toString()))

@@ -63,6 +63,7 @@ class EventActivity : AppCompatActivity() {
         }
     }
 
+
     private fun getToken() {
         loginViewModel.getToken().observe(this) {
             val role = Helper.getRole(it)

@@ -25,11 +25,7 @@ class DocReqRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.getAllDocReq(email)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal mengambil data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -41,11 +37,7 @@ class DocReqRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.deleteDocReq(id)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal menghapus data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }
@@ -57,11 +49,7 @@ class DocReqRepository @Inject constructor(
             emit(Resource.Loading())
             try {
                 val response = defaultApiService.addDocReq(doc)
-                if (response!=null){
-                    emit(Resource.Success(response))
-                }else{
-                    emit(Resource.Error("Gagal menambahkan data"))
-                }
+                emit(Resource.Success(response))
             } catch (e : Exception){
                 emit(Resource.Error(e.message.toString()))
             }

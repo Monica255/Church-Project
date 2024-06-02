@@ -152,11 +152,11 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
 
-        binding.btQr.setOnClickListener {
+        binding.cvAbsen.setOnClickListener {
             getMyLocation()
         }
 
-        binding.btAttendance.setOnClickListener {
+        binding.cvDaftarAbsen.setOnClickListener {
             startActivity(Intent(this, AttendanceActivity::class.java))
         }
 

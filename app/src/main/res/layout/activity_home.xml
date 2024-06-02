@@ -28,7 +28,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_start_end"
+            android:layout_marginStart="@dimen/margin_start_end"
+            android:layout_marginEnd="@dimen/margin_start_end"
+            android:layout_marginBottom="@dimen/margin_start_end"
             android:background="@color/white"
             app:cardCornerRadius="8dp">
 
@@ -115,26 +117,26 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/bt_qr"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="@dimen/margin_item_with_ds"
-                    android:background="@drawable/icon_qr"
-                    app:layout_constraintBottom_toBottomOf="@id/cv_role"
-                    app:layout_constraintEnd_toEndOf="@id/bt_logout"
-                    app:layout_constraintTop_toTopOf="@id/cv_role" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/bt_qr"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginEnd="@dimen/margin_item_with_ds"-->
+<!--                    android:background="@drawable/icon_qr"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/cv_role"-->
+<!--                    app:layout_constraintEnd_toEndOf="@id/bt_logout"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/cv_role" />-->
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/bt_attendance"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:layout_marginEnd="@dimen/margin_layout_with_ds"
-                    android:background="@drawable/icon_list_absen"
-                    app:layout_constraintBottom_toBottomOf="@id/bt_qr"
-                    app:layout_constraintEnd_toStartOf="@id/bt_qr"
-                    app:layout_constraintTop_toBottomOf="@id/bt_qr"
-                    app:layout_constraintTop_toTopOf="@id/bt_qr" />
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:id="@+id/bt_attendance"-->
+<!--                    android:layout_width="38dp"-->
+<!--                    android:layout_height="38dp"-->
+<!--                    android:layout_marginEnd="@dimen/margin_layout_with_ds"-->
+<!--                    android:background="@drawable/icon_list_absen"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/bt_qr"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/bt_qr"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/bt_qr"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/bt_qr" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -143,7 +145,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="@dimen/margin_layout_with_ds"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_header">
 
@@ -181,11 +182,91 @@
                 </FrameLayout>
 
             </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="@dimen/margin_layout_with_ds"
+                android:layout_marginEnd="@dimen/margin_layout_with_ds"
+
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_absen"
+                    android:layout_margin="@dimen/margin_item_with_ds"
+                    android:elevation="8dp"
+                    app:contentPaddingRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:id="@+id/ll_absen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:backgroundTint="@color/maroon"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/icon_qr" />
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            style="@style/SubTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/absen"
+                            android:textColor="@color/maroon"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_daftar_absen"
+                    android:layout_margin="@dimen/margin_item_with_ds"
+                    android:elevation="8dp"
+                    app:contentPaddingRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:id="@+id/ll_daftar_absen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_layout_with_ds"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:backgroundTint="@color/maroon"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/icon_list_absen" />
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            style="@style/SubTitleText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Daftar Kehadiran"
+                            android:textAlignment="center"
+                            android:textColor="@color/maroon"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_margin="@dimen/margin_layout_with_ds"
+                android:layout_marginStart="@dimen/margin_layout_with_ds"
+                android:layout_marginEnd="@dimen/margin_layout_with_ds"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
@@ -210,6 +291,7 @@
                             android:background="@drawable/icon_bible" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/SubTitleText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -243,6 +325,7 @@
                             android:background="@drawable/icon_nfo" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/SubTitleText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -259,7 +342,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_margin="@dimen/margin_layout_with_ds"
+                android:layout_marginStart="@dimen/margin_layout_with_ds"
+                android:layout_marginEnd="@dimen/margin_layout_with_ds"
+
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
@@ -284,6 +369,7 @@
                             android:background="@drawable/icon_pray" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/SubTitleText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -317,6 +403,7 @@
                             android:background="@drawable/icon_doc" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/SubTitleText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

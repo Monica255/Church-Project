@@ -45,12 +45,12 @@
 
                 <ImageView
                     android:id="@+id/img_logo"
-                    android:layout_width="115dp"
-                    android:layout_height="115dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="50dp"
                     android:adjustViewBounds="true"
                     android:contentDescription="Logo"
-                    android:src="@drawable/logo_placeholder"
+                    android:src="@drawable/logo_gereja"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_masuk_untuk_melanjutkan" />
